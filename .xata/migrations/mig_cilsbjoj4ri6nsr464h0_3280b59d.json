@@ -1,0 +1,18 @@
+{
+  "id": "mig_cilsbjoj4ri6nsr464h0",
+  "parentID": "mig_cilsb3oj4ri6nsr464bg",
+  "checksum": "1:3280b59d9de64c6beb9079be0db5a82bd616caa8e42fa62f0fd171cf26521d28",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "url",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "'https://thispersondoesnotexist.com/'"
+        },
+        "table": "Images"
+      }
+    }
+  ]
+}

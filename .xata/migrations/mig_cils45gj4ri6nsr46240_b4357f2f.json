@@ -1,0 +1,13 @@
+{
+  "id": "mig_cils45gj4ri6nsr46240",
+  "parentID": "mig_cilrtmgj4ri6nsr460u0",
+  "checksum": "1:b4357f2f8cacc2082aebc711499a0caa302d6fba510bd6ddce125530bcb162c0",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "labels",
+        "table": "Posts"
+      }
+    }
+  ]
+}
