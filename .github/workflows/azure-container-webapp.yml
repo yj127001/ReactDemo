@@ -27,11 +27,11 @@
 name: Build and deploy a container to an Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: your-app-name  # set this to the name of your Azure Web App
+  AZURE_WEBAPP_NAME: your-app-name # set this to the name of your Azure Web App
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -50,7 +50,7 @@ jobs:
       - name: Log in to GitHub container registry
         uses: docker/login-action@v1.10.0
         with:
-          registry: ghcr.io
+          registry: jingjingcontainer.azurecr.io
           username: ${{ github.actor }}
           password: ${{ github.token }}
 
@@ -61,7 +61,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
+          tags: jingjingcontainer.azurecr.io/${{ env.REPO }}:${{ github.sha }}
           file: ./Dockerfile
 
   deploy:
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Development'
+      name: "Development"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -83,4 +83,4 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: 'ghcr.io/${{ env.REPO }}:${{ github.sha }}'
+          images: "jingjingcontainer.azurecr.io/${{ env.REPO }}:${{ github.sha }}"
