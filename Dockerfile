@@ -4,13 +4,13 @@ RUN mkdir -p /app/src
 
 WORKDIR /app/src
 
-COPY package.json .
+COPY . .
 
 RUN npm install --legacy-peer-deps
 
-COPY . .
+RUN npm run build
 
-EXPOSE 5173
+EXPOSE 4173
 
-CMD [ "npm", "run", "dev"]
+CMD [ "npm", "run", "preview"]
 
