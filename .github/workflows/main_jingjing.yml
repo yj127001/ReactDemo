@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://jingjingcontainer.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_3821c199691240a0bc404b8ad6875f49 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_d0c5d57b2d5c4fca8fafaf2df144c82b }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_76f270d7d7a14166b573f5b5a1a8eb45 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_6e38c902ad4a4da5bb761cc7cac9263f }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: jingjingcontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_3821c199691240a0bc404b8ad6875f49 }}/jingimage:${{ github.sha }}
+        tags: jingjingcontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_76f270d7d7a14166b573f5b5a1a8eb45 }}/jingimage:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'jingjing'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_86b6b592623446a18ec0e22fe78eaad2 }}
-        images: 'jingjingcontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_3821c199691240a0bc404b8ad6875f49 }}/jingimage:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_98cca671b0bd4d66a451fb9a1de0546a }}
+        images: 'jingjingcontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_76f270d7d7a14166b573f5b5a1a8eb45 }}/jingimage:${{ github.sha }}'
